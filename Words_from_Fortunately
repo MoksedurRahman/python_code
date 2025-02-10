@@ -1,0 +1,18 @@
+from itertools import permutations  
+from nltk.corpus import words  
+import nltk  
+
+nltk.download("words")  
+
+english_words = set(words.words())  
+word = "fortunately"  
+
+valid_words = set()  
+for i in range(2, len(word) + 1):  
+    for perm in permutations(word, i):  
+        perm_word = "".join(perm)  
+        if perm_word in english_words:  
+            valid_words.add(perm_word)  
+
+print(sorted(valid_words))  
+print("Total words:", len(valid_words))  

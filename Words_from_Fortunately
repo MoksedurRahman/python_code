@@ -7,6 +7,12 @@ nltk.download("words")
 english_words = set(words.words())  
 word = "fortunately"  
 
+# Function to get word meanings
+def get_word_meanings(word):
+    synsets = wordnet.synsets(word)
+    meanings = [syn.definition() for syn in synsets]
+    return meanings if meanings else ["No definition found"]
+
 valid_words = set()  
 for i in range(2, len(word) + 1):  
     for perm in permutations(word, i):  
